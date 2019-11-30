@@ -83,15 +83,15 @@ TeleopTwistJoy::TeleopTwistJoy(const rclcpp::NodeOptions& options) : Node("teleo
   pimpl_->enable_turbo_button = this->declare_parameter("enable_turbo_button", -1);
 
   std::map<std::string, int64_t> default_linear_map{
-    {"x", 5L},
+    {"x", 1L},
     {"y", -1L},
-    {"z", -1L},
+    {"z", 4L},
   };
   this->declare_parameters("axis_linear", default_linear_map);
   this->get_parameters("axis_linear", pimpl_->axis_linear_map);
 
   std::map<std::string, int64_t> default_angular_map{
-    {"yaw", 2L},
+    {"yaw", 0L},
     {"pitch", -1L},
     {"roll", -1L},
   };
@@ -101,7 +101,7 @@ TeleopTwistJoy::TeleopTwistJoy(const rclcpp::NodeOptions& options) : Node("teleo
   std::map<std::string, double> default_scale_linear_normal_map{
     {"x", 0.5},
     {"y", 0.0},
-    {"z", 0.0},
+    {"z", 0.5},
   };
   this->declare_parameters("scale_linear", default_scale_linear_normal_map);
   this->get_parameters("scale_linear", pimpl_->scale_linear_map["normal"]);
@@ -109,7 +109,7 @@ TeleopTwistJoy::TeleopTwistJoy(const rclcpp::NodeOptions& options) : Node("teleo
   std::map<std::string, double> default_scale_linear_turbo_map{
     {"x", 1.0},
     {"y", 0.0},
-    {"z", 0.0},
+    {"z", 1.0},
   };
   this->declare_parameters("scale_linear_turbo", default_scale_linear_turbo_map);
   this->get_parameters("scale_linear_turbo", pimpl_->scale_linear_map["turbo"]);
